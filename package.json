@@ -1,6 +1,36 @@
 {
   "name": "nw-widgets",
-  "version": "0.0.0",
+  "version": "0.0.2","description": "A simple search engine associate rest api to search. This lib also support paginate with lazy load or eager load api",
+  "author": "oniwa <oniwa1102@gmail.com> (https://huudai.com)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daibh/nw-widgets.git"
+  },
+  "bugs": {
+    "url": "https://github.com/daibh/nw-widgets/issues",
+    "email": "oniwa1102@gmail.com"
+  },
+  "homepage": "https://huudai.com/nw-widgets",
+  "keywords": [
+    "angular",
+    "autocomplete",
+    "ng-select",
+    "typedhead",
+    "search",
+    "search-engine",
+    "search engine",
+    "auto complete",
+    "typescript",
+    "javascript",
+    "directive",
+    "nw-widgets",
+    "nw",
+    "widget",
+    "widgets",
+    "oniwa",
+    "niwa"
+  ],
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -24,6 +54,8 @@
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~0.802.2",
+    "@angular-devkit/build-ng-packagr": "~0.802.2",
     "@angular/cli": "~8.2.2",
     "@angular/compiler-cli": "~8.2.0",
     "@angular/language-service": "~8.2.0",
@@ -38,8 +70,10 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "ng-packagr": "^5.3.0",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
+    "tsickle": "^0.36.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
   }

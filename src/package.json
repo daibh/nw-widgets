@@ -1,0 +1,45 @@
+{
+  "name": "nw-widgets",
+  "version": "0.0.2",
+  "description": "A simple search engine associate rest api to search. This lib also support paginate with lazy load or eager load api",
+  "author": {
+    "name": "oniwa",
+    "email": "oniwa1102@gmail.com",
+    "url": "https://huudai.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daibh/nw-widgets.git"
+  },
+  "bugs": {
+    "email": "oniwa1102@gmail.com",
+    "url": "https://github.com/daibh/nw-widgets/issues"
+  },
+  "homepage": "https://huudai.com/nw-widgets",
+  "keywords": [
+    "angular",
+    "autocomplete",
+    "ng-select",
+    "typedhead",
+    "search",
+    "search-engine",
+    "search engine",
+    "auto complete",
+    "typescript",
+    "javascript",
+    "directive",
+    "nw-widgets",
+    "nw",
+    "widget",
+    "widgets",
+    "oniwa",
+    "niwa"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^8.2.0",
+    "@angular/core": "^8.2.0",
+    "@angular/forms": "~8.2.0",
+    "rxjs": "~6.4.0"
+  }
+}

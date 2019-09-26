@@ -4,9 +4,11 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
-    "declaration": false,
+    "declaration": true,
     "downlevelIteration": true,
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "noEmitOnError": false,
     "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,
@@ -17,7 +19,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "nw-widgets": [
+        "dist/nw-widgets"
+      ],
+      "nw-widgets/*": [
+        "dist/nw-widgets/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
