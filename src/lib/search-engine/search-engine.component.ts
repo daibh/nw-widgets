@@ -53,8 +53,11 @@ export class SearchEngineComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   destroySubscriptions: Subscription[] = [];
   protected isShowSubscriber: Subscriber<boolean>;
-  protected isShowObserable: Observable<boolean> = new Observable(subscriber => this.isShowSubscriber = subscriber);
+  isShowObserable: Observable<boolean> = new Observable(subscriber => this.isShowSubscriber = subscriber);
   private _isCollapse: boolean = true;
+  get isCollapse() {
+    return this._isCollapse;
+  }
   private subToggleBehavior = new BehaviorSubject<any>(this._isCollapse);
   private subOutSizeBehavior = new BehaviorSubject<any>(this._isCollapse);
   private subFocusBehavior = new BehaviorSubject<any>(false);
@@ -167,7 +170,7 @@ export class SearchEngineComponent implements OnInit, OnDestroy {
    * showValue
    * Hiển thị giá trị trên dropdown
    */
-  protected showValue = () => {
+  showValue = () => {
     return this.modelValue && this.modelValue[this.label] ? this.modelValue[this.label] : this.placeholder;
   }
 

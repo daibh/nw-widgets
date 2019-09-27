@@ -36,6 +36,7 @@
     "niwa"
   ],
   "license": "MIT",
+  "private": false,
   "peerDependencies": {
     "@angular/common": "^8.2.0",
     "@angular/core": "^8.2.0",

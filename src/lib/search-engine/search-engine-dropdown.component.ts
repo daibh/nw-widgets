@@ -1,6 +1,6 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef, OnDestroy } from '@angular/core';
-import { map, tap, switchMap, filter } from 'rxjs/operators';
-import { Subscription, fromEvent, BehaviorSubject, Observable } from 'rxjs';
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef } from '@angular/core';
+import { BehaviorSubject, fromEvent, Observable, Subscription } from 'rxjs';
+import { filter, map, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: '[ngx-search-engine-dropdown]',
@@ -50,8 +50,8 @@ export class SearchEngineDropdownComponent implements OnInit, OnDestroy {
 
   @Output() nextPage: EventEmitter<number> = new EventEmitter<number>();
 
-  protected virtualScrollHeight: string;
-  private isShow: boolean;
+  virtualScrollHeight: string;
+  isShow: boolean;
   private subscriptions: Subscription[] = [];
   private subScrollBehavior: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   private subToggleBehavior: BehaviorSubject<any> = new BehaviorSubject<any>(null);
@@ -167,7 +167,7 @@ export class SearchEngineDropdownComponent implements OnInit, OnDestroy {
 
   private remToPixel = rem => rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
 
-  protected isActive = item => this.activeItem && this.activeItem[this.key] == item[this.key];
+  isActive = item => this.activeItem && this.activeItem[this.key] == item[this.key];
 
   ngOnDestroy() {
     while (this.subscriptions.length) {
