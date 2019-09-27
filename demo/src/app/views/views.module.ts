@@ -14,7 +14,7 @@ import { HeaderComponent } from '../layout/header/header.component';
     FooterComponent,
     ViewsComponent,
     HomeComponent,
-    SearchEngineComponent
+    SearchEngineComponent,
   ],
   imports: [
     SharedModule,

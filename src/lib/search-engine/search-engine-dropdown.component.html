@@ -1,0 +1,11 @@
+<div class="dropdown-item dropdown-item-search">
+  <input type="text" class="form-control" [placeholder]="placeholder" (input)="$event.preventDefault(); termChange.emit($event.target.value)" />
+</div>
+<div class="virtual-scroll" [style.maxHeight]="virtualScrollHeight">
+  <ng-template ngFor [ngForOf]="dataSource" let-r let-idx="index">
+    <button type="button" class="dropdown-item" [id]="'item-' + r[key]" [class.active]="isActive(r)" (click)="$event.preventDefault(); selectedItem.emit(r)">
+      <ng-template [ngTemplateOutlet]="itemTemplate"
+        [ngTemplateOutletContext]="{result: r, term: term, formatter: formatter}"></ng-template>
+    </button>
+  </ng-template>
+</div>

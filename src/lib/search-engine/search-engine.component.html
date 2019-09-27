@@ -1,1 +1,24 @@
-<p>search-engine works!</p>
+<div class="input-group mb-2">
+    <input type="text" class="form-control input-search-engine-control"
+      aria-label="Text input with segmented dropdown button" [readonly]="true" [value]="showValue()">
+    <div class="input-group-append">
+      <button type="button"
+        class="btn btn-outline-secondary input-search-engine-control dropdown-toggle dropdown-toggle-split"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+        <i class="fa" [class.fa-chevron-down]="_isCollapse" [class.fa-chevron-up]="!_isCollapse"></i>
+      </button>
+    </div>
+    <div ngx-search-engine-dropdown #searchEngineDropdown
+      [isShowObserable]="isShowObserable"
+      [itemTemplate]="itemTemplate"
+      [maxVisibilityBuffer]="maxVisibilityBuffer"
+      [currenLoadedPage]="currenLoadedPage"
+      [dataSource]="filterResult"
+      [totalRecords]="totalRecords"
+      [activeItem]="modelValue"
+      [key]="key"
+      [label]="label"
+      [(term)]="term">
+    </div>
+  </div>

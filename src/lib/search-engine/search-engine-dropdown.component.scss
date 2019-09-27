@@ -1,0 +1,34 @@
+:host {
+  margin-top: 0px;
+  border-radius: 0;
+  border-top: 0;
+  padding-top: 0;
+  padding-bottom: 0.125rem;
+}
+
+.virtual-scroll {
+  overflow-y: auto;
+}
+
+.dropdown-item {
+  &.dropdown-item-search {
+    padding: 0.125rem 0.125rem;
+    &:hover,
+    &:focus,
+    &:active {
+      background: transparent;
+    }
+    input.form-control {
+      border-radius: 0;
+    }
+  }
+  &:not(.dropdown-item-search) {
+    &:hover,
+    &:focus,
+    &.current:not(.active) {
+      color: #16181b;
+      text-decoration: none;
+      background-color: #b6bbc1;
+    }
+  }
+}

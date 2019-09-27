@@ -1,1 +1,19 @@
-<p>search-engine works!</p>
+<div class="container">
+    <form novalidate [formGroup]="form">
+        <h5 class="mt-3 mb-3">Example search-engine</h5>
+        <div>
+            <ngx-search-engine class="w-100" formControlName="searchSelected" name="searchSelected"
+                [search]="searchEngine" label="name">
+                <ng-template #itemTemplate let-item="result">
+                    <span class="{{item.id}}">{{item.name}}</span>
+                </ng-template>
+            </ngx-search-engine>
+        </div>
+    </form>
+    <hr />
+    <h5 class="m-3">Form values</h5>
+    <div class="col-md-12">
+        <pre>{{form.value | json}}</pre>
+    </div>
+    <hr />
+</div>
