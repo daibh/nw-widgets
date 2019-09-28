@@ -1,6 +1,6 @@
 {
   "name": "nw-widgets",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "A simple search engine associate rest api to search. This lib also support paginate with lazy load or eager load api",
   "author": {
     "name": "oniwa",
