@@ -1,0 +1,50 @@
+<div class="timeline">
+  <div class="timeline-wrapper timeline-wrapper-info" [class.timeline-inverted]="isTwoColumn && idx % 2 === 0"
+    *ngFor="let node of source; let idx = index">
+    <div class="timeline-badge"><i [class]="node.icon"
+        (click)="$event.preventDefault(); node.isActive = !node.isActive;"></i></div>
+
+    <div class="timeline-panel" *ngIf="node.source as item">
+      <div class="timeline-heading" *ngIf="item.title">
+        <h6 class="timeline-title">{{item.title}}</h6>
+      </div>
+      <div class="timeline-body" [style.display]="node.isActive ? 'block' : 'none'">
+        <ng-template [ngIf]="isMultitlePanel(item)" [ngIfElse]="singleEvents">
+          <ng-template #multipleAvailable>
+            <div *ngFor="let evt of item.events" class="card mb-3">
+              <div class="card-body">
+                <div class="row" *ngFor="let key of getObjectkeys(evt)">
+                  <div class="col-md-4">{{key}}</div>
+                  <div class="col-md-8">{{evt[key]}}</div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template [ngIf]="multipleEventsTemplateRef" [ngIfElse]="multipleAvailable"
+            [ngTemplateOutlet]="multipleEventsTemplateRef"
+            [ngTemplateOutletContext]="{event: item.events, time: node.time}"></ng-template>
+        </ng-template>
+        <ng-template #singleEvents>
+          <ng-template #singleAvailable>
+            <div class="card mb-3">
+              <div class="card-body">
+                <div class="row" *ngFor="let key of getObjectkeys(item.events)">
+                  <div class="col-md-4">{{key}}</div>
+                  <div class="col-md-8">{{item.events[key]}}</div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template [ngIf]="singleEventTemplateRef" [ngIfElse]="singleAvailable"
+            [ngTemplateOutlet]="singleEventTemplateRef"
+            [ngTemplateOutletContext]="{event: item.events, time: node.time}"></ng-template>
+        </ng-template>
+      </div>
+      <div class="timeline-footer d-flex align-items-center flex-wrap">
+        <i class="mdi mdi-heart-outline text-muted mr-1"></i>
+        <span></span>
+        <span class="ml-md-auto font-weight-bold">{{node.time}}</span>
+      </div>
+    </div>
+  </div>
+</div>

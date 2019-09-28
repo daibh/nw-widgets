@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ViewsComponent } from './views.component';
 import { HomeComponent } from './home/home.component';
 import { SearchEngineComponent } from './search-engine/search-engine.component';
+import { TimelineComponent } from './timeline/timeline.component';
 
 
 export const VIEWS_ROUTES: Routes = [
@@ -24,6 +25,14 @@ export const VIEWS_ROUTES: Routes = [
         data: {
           name: 'Động cơ tìm kiếm',
           title: 'Động cơ tìm kiếm'
+        }
+      },
+      {
+        path: 'timeline',
+        component: TimelineComponent,
+        data: {
+          name: 'Dòng thời gian',
+          title: 'Dòng thời gian'
         }
       }
     ]
