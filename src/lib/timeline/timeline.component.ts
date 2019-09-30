@@ -2,7 +2,7 @@ import { Component, ContentChild, Input, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'ngx-timeline',
-  exportAs: 'ngxTimeline',
+  exportAs: 'nwTimeline',
   templateUrl: './timeline.component.html',
   styleUrls: ['./timeline.component.scss']
 })

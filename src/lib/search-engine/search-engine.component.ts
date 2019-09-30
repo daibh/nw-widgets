@@ -6,7 +6,7 @@ import { SearchEngineDropdownComponent } from './search-engine-dropdown.componen
 
 @Component({
   selector: 'ngx-search-engine',
-  exportAs: 'ngxSearchEngine',
+  exportAs: 'nwSearchEngine',
   templateUrl: './search-engine.component.html',
   styleUrls: ['./search-engine.component.scss'],
   providers: [

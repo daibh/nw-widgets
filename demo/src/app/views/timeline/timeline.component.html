@@ -1,35 +1,37 @@
-<div id="accordion" class="m-5">
-    <div class="card m-3">
-        <div class="card-header">
-            <a class="collapsed card-link" data-toggle="collapse"
-                (click)="$event.preventDefault(); showAccordion = showAccordion === 1 ? 0: 1;">
-                Here is timeline presentation
-            </a>
-        </div>
-        <div id="collapseTwo" class="collapse" [class.show]="showAccordion === 1" data-parent="#accordion">
-            <div class="card-body">
-                <ngx-timeline [source]="timelineSource | async">
-                    <!-- <ng-template #singleTemplateRef let-events="event" let-time="time">
-                        {{events | json}}
-                    </ng-template>
-                    <ng-template #multipleTemplateRef let-events="event" let-time="time">
-                        {{events | json}}
-                    </ng-template> -->
-                </ngx-timeline>
+<div class="container">
+    <div id="accordion" class="m-5">
+        <div class="card m-3">
+            <div class="card-header">
+                <a class="collapsed card-link" data-toggle="collapse"
+                    (click)="$event.preventDefault(); showAccordion = showAccordion === 1 ? 0: 1;">
+                    Here is timeline presentation
+                </a>
+            </div>
+            <div id="collapseTwo" class="collapse" [class.show]="showAccordion === 1" data-parent="#accordion">
+                <div class="card-body">
+                    <ngx-timeline [source]="timelineSource | async">
+                        <!-- <ng-template #singleTemplateRef let-events="event" let-time="time">
+                            {{events | json}}
+                        </ng-template>
+                        <ng-template #multipleTemplateRef let-events="event" let-time="time">
+                            {{events | json}}
+                        </ng-template> -->
+                    </ngx-timeline>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="card m-3">
-        <div class="card-header">
-            <a class="card-link" data-toggle="collapse"
-                (click)="$event.preventDefault(); showAccordion = showAccordion === 2 ? 0: 2;">
-                And here is timeline source input from outline component
-            </a>
-        </div>
-        <div id="collapseOne" class="collapse" [class.show]="showAccordion === 2" data-parent="#accordion">
-            <div class="card-body">
-                <pre>{{timelineSource | async | json}}</pre>
+        <div class="card m-3">
+            <div class="card-header">
+                <a class="card-link" data-toggle="collapse"
+                    (click)="$event.preventDefault(); showAccordion = showAccordion === 2 ? 0: 2;">
+                    And here is timeline source input from outline component
+                </a>
+            </div>
+            <div id="collapseOne" class="collapse" [class.show]="showAccordion === 2" data-parent="#accordion">
+                <div class="card-body">
+                    <pre>{{timelineSource | async | json}}</pre>
+                </div>
             </div>
         </div>
     </div>
