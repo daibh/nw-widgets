@@ -7,6 +7,7 @@ import { SearchEngineComponent } from './search-engine/search-engine.component';
 import { FooterComponent } from '../layout/footer/footer.component';
 import { HeaderComponent } from '../layout/header/header.component';
 import { TimelineComponent } from './timeline/timeline.component';
+import { CommonConceptComponent } from './common-concept/common-concept.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { TimelineComponent } from './timeline/timeline.component';
     HomeComponent,
     SearchEngineComponent,
     TimelineComponent,
+    CommonConceptComponent,
   ],
   imports: [
     SharedModule,

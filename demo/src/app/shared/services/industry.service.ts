@@ -1,7 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { filter, tap, map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class IndustryService {
     let totalRecords = 0;
     let startIndex = 0;
     let size = 5;
-    return this.httpClient.get<Industry[]>('/assets/data/industry.json')
+    return this.httpClient.get<Industry[]>(`${environment.FAKE_API}/assets/data/industry.json`)
       .pipe(
         // filter search
         map(data => data.filter(item => {

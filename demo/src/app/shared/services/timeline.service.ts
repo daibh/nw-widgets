@@ -1,7 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { filter, tap, map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class TimelineService {
   constructor(private httpClient: HttpClient) { }
 
   getTimelineData(): Observable<TimelineResponse[]> {
-    return this.httpClient.get<TimelineResponse[]>('/assets/data/timeline.json');
+    return this.httpClient.get<TimelineResponse[]>(`${environment.FAKE_API}/assets/data/timeline.json`);
   }
 }
 

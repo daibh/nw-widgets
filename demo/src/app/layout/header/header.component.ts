@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.routes.forEach(r => this.getNavFromRoute(r));
-    console.log(this.navs);
   }
 
   getNavFromRoute = (r: Route) => {

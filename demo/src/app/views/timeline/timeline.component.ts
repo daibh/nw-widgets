@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 export class TimelineComponent implements OnInit {
 
   timelineSource: Observable<TimelineResponse[]>;
+  showAccordion = 1;
 
   constructor(
     private service: TimelineService

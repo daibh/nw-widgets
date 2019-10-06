@@ -1,13 +1,105 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <title>Demo</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
+  <title>♥ Nw-Widgets ♥ library built in with angular 8</title>
+  <base href="/nw-widgets/">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- author meta -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="author" content="oNiwa" />
+  <!-- meta for organization -->
+  <meta property="og:url" content="https://huudai.com/nw-widgets/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="♥ Hữu Đại ♥ - ♦ Nw-Widgets ♦ - ○ Trang chủ" />
+  <meta property="og:image" content="https://huudai.com/nw-widgets/assets/images/logo-527x274.png" />
+  <meta property="og:description"
+    content="Nw-Widgets is a smart library use angular techique. It's contains some module can be usage and decrement develop time with developer as search engine, timeline, ..." />
+  <meta property="og:keywords"
+    content="angular, autocomplete, ng-select, typedhead, search, search-engine, searchengine, autocomplete, typescript, javascript, directive, nw-widgets, nw, widget, widgets, oniwa, niwa, timeline" />
+  <meta property="og:site_name" content="♥ Hữu Đại ♥" />
+  <meta property="og:email" content="oniwa1102@gmail.com" />
+  <meta property="og:phone_number" content="(+84) 349 803 665" />
+  <!-- meta for twitter -->
+  <meta property="twitter:card" content="summary" />
+  <meta property="twitter:site" content="@buihuudaitb" />
+  <meta property="twitter:title" content="Trang chủ" />
+  <meta property="twitter:description"
+    content="Nw-Widgets is a smart library use angular techique. It's contains some module can be usage and decrement develop time with developer as search engine, timeline, ..." />
+  <meta property="twitter:image" content="https://huudai.com/nw-widgets/assets/images/logo-527x274.png" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <style type="text/css">
+    body,
+    html {
+      height: 100%;
+    }
+
+    .app-loading {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .app-loading .spinner {
+      height: 200px;
+      width: 200px;
+      animation: rotate 2s linear infinite;
+      transform-origin: center center;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+
+    .app-loading .spinner .path {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+      animation: dash 1.5s ease-in-out infinite;
+      stroke-linecap: round;
+      stroke: #ddd;
+    }
+
+    @keyframes rotate {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes dash {
+      0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+      }
+
+      50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+      }
+
+      100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+      }
+    }
+  </style>
+<link rel="stylesheet" href="styles.4900e3fa7f74aae0f094.css"></head>
+
 <body>
-  <app-root></app-root>
-<script src="runtime-es2015.js" type="module"></script><script src="polyfills-es2015.js" type="module"></script><script src="runtime-es5.js" nomodule defer></script><script src="polyfills-es5.js" nomodule defer></script><script src="styles-es2015.js" type="module"></script><script src="styles-es5.js" nomodule defer></script><script src="vendor-es2015.js" type="module"></script><script src="main-es2015.js" type="module"></script><script src="vendor-es5.js" nomodule defer></script><script src="main-es5.js" nomodule defer></script></body>
+  <app-root>
+    <div class="app-loading">
+      <div class="logo">
+        <svg class="spinner" viewBox="25 25 50 50">
+          <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+      </div>
+    </div>
+  </app-root>
+<script src="runtime-es2015.0d703a4f74348db75001.js" type="module"></script><script src="polyfills-es2015.4e779fd1398c11638dcc.js" type="module"></script><script src="runtime-es5.6acb370f3f0c6024cf98.js" nomodule defer></script><script src="polyfills-es5.e93cd70abd6d9c5f25ee.js" nomodule defer></script><script src="main-es2015.3381a94bc457fa5c0210.js" type="module"></script><script src="main-es5.fced23ebd55d42083c12.js" nomodule defer></script></body>
+
 </html>
