@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { SearchEngineComponent } from './search-engine/search-engine.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { CommonConceptComponent } from './common-concept/common-concept.component';
+import { ToastComponent } from './toast/toast.component';
 
 
 export const VIEWS_ROUTES: Routes = [
@@ -42,6 +43,14 @@ export const VIEWS_ROUTES: Routes = [
         data: {
           name: 'Định nghĩa component chung',
           title: 'Định nghĩa component chung'
+        }
+      },
+      {
+        path: 'toast',
+        component: ToastComponent,
+        data: {
+          name: 'Thông báo nổi',
+          title: 'Thông báo nổi'
         }
       }
     ]
