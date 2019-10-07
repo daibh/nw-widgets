@@ -3,16 +3,19 @@ var router = express.Router();
 const fs = require('fs');
 var Rx = require('rxjs');
 var RxOp = require('rxjs/operators');
-
-/* GET persons listing. */
+const pathResource = 'public/data/person.json';
+const resourceNotFound = 'resource is not existed. please contact administrator.';
+/**
+ * GET persons listing.
+ */
 router.get('/', function (req, res, next) {
-  fs.open('public/data/person.json', fs.constants.R_OK, (err, fd) => {
+  console.log('[GET] api/persons');
+  fs.open(pathResource, fs.constants.R_OK, (err, fd) => {
     if (err) {
       if (err.code === 'ENOENT') {
-        console.error('data/person.json does not exist');
+        console.error(resourceNotFound);
       }
-
-      console.log(JSON.stringify(err));
+      console.error(JSON.stringify(err));
       res.json(null)
     } else {
       const query = req.query;
@@ -21,9 +24,9 @@ router.get('/', function (req, res, next) {
       let totalRecords = 0;
       let startIndex = 0;
       let size = 5;
-      fs.readFile('public/data/person.json', { encoding: 'utf-8' }, (err, data) => {
+      fs.readFile(pathResource, { encoding: 'utf-8' }, (err, data) => {
         if (err !== null) {
-          console.log(JSON.stringify(err));
+          console.error(JSON.stringify(err));
           res.json(null)
         } else {
           totalRecords = data ? data.length : 0;
@@ -54,6 +57,124 @@ router.get('/', function (req, res, next) {
             });
           });
         }
+      });
+    }
+  });
+});
+
+/**
+ * POST new person listing
+ */
+router.post('/', function (req, res, next) {
+  console.log('[POST] api/persons');
+  fs.open(pathResource, fs.constants.R_OK | fs.constants.W_OK, (err, fd) => {
+    if (err) {
+      if (err.code === 'ENOENT') {
+        console.error(resourceNotFound);
+      }
+      console.error(JSON.stringify(err));
+      res.json(null)
+    } else {
+      fs.readFile(pathResource, { encoding: 'utf-8' }, (err, data) => {
+        if (err !== null) {
+          console.error(JSON.stringify(err));
+          return null;
+        }
+        const persons = JSON.parse(data) || [];
+        const reqBody = req.body;
+        if (!reqBody.id || reqBody.id === '') {
+          const newPerson = {
+            id: persons.reduce((x, y) => x > parseInt(y.id) ? x : parseInt(y.id), 0) + 1,
+            name: reqBody.name,
+            email: reqBody.email,
+            address: reqBody.address,
+          }
+          persons.push(newPerson);
+        }
+        fs.writeFile(pathResource, JSON.stringify(persons), (err) => {
+          if (err !== null) {
+            console.error(JSON.stringify(err));
+            res.json(null)
+          } else {
+            res.json(persons);
+          }
+        });
+      });
+    }
+  });
+});
+
+/**
+ * PUT existed person listing
+ */
+router.put('/', function (req, res, next) {
+  console.log('[PUT] api/persons');
+  fs.open(pathResource, fs.constants.R_OK | fs.constants.W_OK, (err, fd) => {
+    if (err) {
+      if (err.code === 'ENOENT') {
+        console.error(resourceNotFound);
+      }
+      console.error(JSON.stringify(err));
+      res.json(null)
+    } else {
+      fs.readFile(pathResource, { encoding: 'utf-8' }, (err, data) => {
+        if (err !== null) {
+          console.error(JSON.stringify(err));
+          return null;
+        }
+        const persons = JSON.parse(data) || [];
+        const reqBody = req.body;
+        let editPerson = null;
+        if (reqBody.id && (editPerson = persons.find(p => p.id === reqBody.id)) != null) {
+          editPerson.name = reqBody.name;
+          editPerson.email = reqBody.email;
+          editPerson.address = reqBody.address;
+        }
+        fs.writeFile(pathResource, JSON.stringify(persons), (err) => {
+          if (err !== null) {
+            console.error(JSON.stringify(err));
+            res.json(null)
+          } else {
+            res.json(persons);
+          }
+        });
+      });
+    }
+  });
+});
+
+/**
+ * DELETE existed person listing
+ */
+router.delete('/:id', function (req, res, next) {
+  console.log('[DELETE] api/persons', req.params['id']);
+  fs.open(pathResource, fs.constants.R_OK | fs.constants.W_OK, (err, fd) => {
+    if (err) {
+      if (err.code === 'ENOENT') {
+        console.error(resourceNotFound);
+      }
+      console.error(JSON.stringify(err));
+      res.json(null)
+    } else {
+      fs.readFile(pathResource, { encoding: 'utf-8' }, (err, data) => {
+        if (err !== null) {
+          console.log(JSON.stringify(err));
+          return null;
+        }
+        const persons = JSON.parse(data) || [];
+        const deleteId = req.params['id'];
+        let index = null;
+        if (deleteId && (index = persons.findIndex(p => p.id == deleteId)) !== -1) {
+          persons.splice(index, 1);
+        }
+        fs.writeFile(pathResource, JSON.stringify(persons), (err) => {
+          if (err !== null) {
+            console.error(JSON.stringify(err));
+            res.json(null)
+          } else {
+            res.json(persons);
+          }
+        });
       });
     }
   });

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { PersonService } from 'src/app/shared/services/person.service';
 import { tap, switchMap, distinctUntilChanged, debounceTime } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
@@ -10,7 +10,7 @@ import { SearchResponse } from 'src/app/shared/models/search.model';
   templateUrl: './common-concept.component.html',
   styleUrls: ['./common-concept.component.scss']
 })
-export class CommonConceptComponent implements OnInit {
+export class CommonConceptComponent implements OnInit, AfterViewInit {
   person$: Observable<SearchResponse<IPerson>>;
   enterSubject$: Subject<string> = new Subject<string>();
   constructor(private personService: PersonService) { }
@@ -25,7 +25,10 @@ export class CommonConceptComponent implements OnInit {
         size: 10
       }))
     );
-    this.enterSubject$.next();
+  }
+
+  ngAfterViewInit() {
+    this.enterSubject$.next('');
   }
 
   onTermEnter = $event => this.enterSubject$.next($event.target.value);
