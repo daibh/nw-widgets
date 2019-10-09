@@ -9,6 +9,10 @@ import { HeaderComponent } from '../layout/header/header.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { CommonConceptComponent } from './common-concept/common-concept.component';
 import { ToastComponent } from './toast/toast.component';
+import { PersonComponent } from './person/person.component';
+import { PersonFormComponent } from './person/components/person-form/person-form.component';
+import { PersonAddComponent } from './person/components/person-add/person-add.component';
+import { PersonEditComponent } from './person/components/person-edit/person-edit.component';
 
 
 @NgModule({
@@ -21,11 +25,16 @@ import { ToastComponent } from './toast/toast.component';
     TimelineComponent,
     CommonConceptComponent,
     ToastComponent,
+    PersonComponent,
+    PersonFormComponent,
+    PersonAddComponent,
+    PersonEditComponent,
   ],
   imports: [
     SharedModule,
     ViewsRoutingModule
   ],
+  entryComponents: [],
   providers: []
 })
 export class ViewsModule { }

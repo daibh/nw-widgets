@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="form mt-5 mb-5">
+        <h4>Chỉnh sửa thông tin người dùng</h4>
+        <app-person-form [(value)]="person" [(valid)]="validGroup"></app-person-form>
+        <div class="action">
+            <button type="button" (click)="onUpdate()" class="btn btn-primary">Cập nhật</button>
+            <button type="button" (click)="onBack()" class="btn btn-secondary ml-3">Quay lại</button>
+        </div>
+    </div>
+</div>

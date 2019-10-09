@@ -23,11 +23,12 @@ export class HeaderComponent implements OnInit {
   getNavFromRoute = (r: Route) => {
     if (r.path === '' && r.children && r.children.length) {
       r.children.forEach(c => {
-        this.navs.push({
-          name: c.data && c.data.name ? c.data.name : c.path,
-          route: ['', c.path],
-          title: c.data && c.data.title ? c.data.title : c.path
-        })
+        if (!(c.data && c.data.hide))
+          this.navs.push({
+            name: c.data && c.data.name ? c.data.name : c.path,
+            route: ['', c.path],
+            title: c.data && c.data.title ? c.data.title : c.path
+          })
       })
     } else {
       this.navs.push({

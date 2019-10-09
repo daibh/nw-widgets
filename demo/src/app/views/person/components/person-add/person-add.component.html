@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="form mt-5 mb-5">
+        <h4>Thêm mới thông tin người dùng</h4>
+        <app-person-form [(value)]="person" [(valid)]="validGroup"></app-person-form>
+        <div class="action">
+            <button type="button" (click)="onSave()" class="btn btn-info">Thêm và tiếp tục</button>
+            <button type="button" (click)="onSave()" class="btn btn-primary ml-3 mr-3">Thêm và đóng</button>
+            <button type="button" (click)="onClose()" class="btn btn-secondary">Quay lại</button>
+        </div>
+    </div>
+</div>

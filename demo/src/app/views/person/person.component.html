@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="card mt-5 mb-5">
+        <div class="card-header">Danh sách người dùng</div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="search-panel col-md-8">
+                    <input type="text" class="form-control" placeholder="filter by name"
+                        (input)="onTermEnter($event)" />
+                </div>
+                <div class="action col-md-4 d-flex justify-content-end">
+                    <button type="button" (click)="onAdd()" class="btn btn-primary">Thêm mới</button>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Họ tên</th>
+                        <th>Email</th>
+                        <th>Địa chỉ</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="(searchResponse$ | async) as searchResponse">
+                    <tr *ngFor="let p of searchResponse.items; let idx = index">
+                        <td>{{ idx }}</td>
+                        <td>{{ p.name }}</td>
+                        <td>{{p.email }}</td>
+                        <td>{{p.address}}</td>
+                        <td>
+                            <div class="d-flex justify-content-around">
+                                <button type="button" (click)="onEdit(p)" class="btn btn-info">Chỉnh sửa</button>
+                                <button type="button" (click)="onDelete(p)" class="btn btn-danger">Xóa bỏ</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+            <!-- Pagination -->
+        </div>
+    </div>
+</div>

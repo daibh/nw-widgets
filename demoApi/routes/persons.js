@@ -63,6 +63,84 @@ router.get('/', function (req, res, next) {
 });
 
 /**
+ * GET a person by id listing.
+ */
+router.get('/:id', function (req, res, next) {
+  console.log('[GET] api/persons/:id');
+  fs.open(pathResource, fs.constants.R_OK, (err, fd) => {
+    if (err) {
+      if (err.code === 'ENOENT') {
+        console.error(resourceNotFound);
+      }
+      console.error(JSON.stringify(err));
+      res.json(null)
+    } else {
+      fs.readFile(pathResource, { encoding: 'utf-8' }, (err, data) => {
+        if (err !== null) {
+          console.error(JSON.stringify(err));
+          res.json(null)
+        } else {
+          fs.readFile(pathResource, { encoding: 'utf-8' }, (err, data) => {
+            if (err !== null) {
+              console.log(JSON.stringify(err));
+              return null;
+            }
+            const persons = JSON.parse(data) || [];
+            const deleteId = req.params['id'];
+            let person = null;
+            if (deleteId && (person = persons.find(p => p.id == deleteId)) !== null) {
+              res.json(person)
+            } else {
+              // throw get person error
+              res.json({
+                error: {
+                  message: 'Person is existed.'
+                }
+              });
+            }
+          });
+        }
+      });
+    }
+  });
+});
+
+/**
+ * GET a person by id listing.
+ */
+router.get('/unique/check', function (req, res, next) {
+  console.log('[GET] api/persons/unique/check');
+  fs.open(pathResource, fs.constants.R_OK, (err, fd) => {
+    if (err) {
+      if (err.code === 'ENOENT') {
+        console.error(resourceNotFound);
+      }
+      console.error(JSON.stringify(err));
+      res.json(null)
+    } else {
+      fs.readFile(pathResource, { encoding: 'utf-8' }, (err, data) => {
+        if (err !== null) {
+          console.error(JSON.stringify(err));
+          res.json(null)
+        } else {
+          fs.readFile(pathResource, { encoding: 'utf-8' }, (err, data) => {
+            if (err !== null) {
+              console.log(JSON.stringify(err));
+              return null;
+            }
+            const persons = JSON.parse(data) || [];
+            const query = req.query;
+            const searched = persons.filter(p => (!query.email || p.email == query.email) && (!query.name || p.name == query.name) && (!query.id || query.id != p.id));
+            console.log('searched', query, searched);
+            res.json(searched);
+          });
+        }
+      });
+    }
+  });
+});
+
+/**
  * POST new person listing
  */
 router.post('/', function (req, res, next) {
@@ -82,6 +160,16 @@ router.post('/', function (req, res, next) {
         }
         const persons = JSON.parse(data) || [];
         const reqBody = req.body;
+        // check unique validation email
+        if (persons.some(p => p.email === reqBody.email)) {
+          // throw email error
+          res.json({
+            error: {
+              email: 'Email is existed.'
+            }
+          });
+          return;
+        }
         if (!reqBody.id || reqBody.id === '') {
           const newPerson = {
             id: persons.reduce((x, y) => x > parseInt(y.id) ? x : parseInt(y.id), 0) + 1,
@@ -129,6 +217,24 @@ router.put('/', function (req, res, next) {
           editPerson.name = reqBody.name;
           editPerson.email = reqBody.email;
           editPerson.address = reqBody.address;
+        } else {
+          // throw record not valid error
+          res.json({
+            error: {
+              email: 'Input value invalid.'
+            }
+          });
+          return;
+        }
+        // check unique validation email
+        if (persons.some(p => p.id != reqBody.id && p.email === reqBody.email)) {
+          // throw email error
+          res.json({
+            error: {
+              email: 'Email is existed.'
+            }
+          });
+          return;
         }
         fs.writeFile(pathResource, JSON.stringify(persons), (err) => {
           if (err !== null) {

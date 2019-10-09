@@ -6,6 +6,8 @@ import { SearchEngineComponent } from './search-engine/search-engine.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { CommonConceptComponent } from './common-concept/common-concept.component';
 import { ToastComponent } from './toast/toast.component';
+import { PersonComponent } from './person/person.component';
+import { PersonEditComponent } from './person/components/person-edit/person-edit.component';
 
 
 export const VIEWS_ROUTES: Routes = [
@@ -51,6 +53,23 @@ export const VIEWS_ROUTES: Routes = [
         data: {
           name: 'Thông báo nổi',
           title: 'Thông báo nổi'
+        }
+      },
+      {
+        path: 'person',
+        component: PersonComponent,
+        data: {
+          name: 'Quản lý người dùng',
+          title: 'Quản lý người dùng'
+        }
+      },
+      {
+        path: 'person-edit/:id',
+        component: PersonEditComponent,
+        data: {
+          name: 'Chỉnh sửa thông tin người dùng',
+          title: 'Chỉnh sửa thông tin người dùng',
+          hide: true
         }
       }
     ]
